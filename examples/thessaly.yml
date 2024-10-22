@@ -1,0 +1,279 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: Natech.Mobile.WebApi
+host: www.example.com
+basePath: /
+schemes:
+- https
+consumes:
+- application/json
+produces:
+- application/json
+paths:
+  /api/Accounts/GetAll:
+    post:
+      summary: Get all accounts
+      tags:
+      - Accounts
+      operationId: Accounts_GetAll
+      parameters:
+      - name: body
+        in: body
+        required: true
+        description: Request object for fetching all accounts
+        schema:
+          $ref: '#/definitions/Request'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/AccountsResponse'
+  /api/Accounts/GetAccountDetails:
+    post:
+      summary: Get account details
+      tags:
+      - Accounts
+      operationId: Accounts_GetAccountDetails
+      parameters:
+      - name: body
+        in: body
+        required: true
+        description: Request object for fetching account details
+        schema:
+          $ref: '#/definitions/AccountDetailsRequest'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/AccountsResponse'
+  /api/Accounts/GetLoanDetails:
+    post:
+      summary: Get account loan details
+      tags:
+      - Accounts
+      operationId: Accounts_GetLoanDetails
+      parameters:
+      - name: body
+        in: body
+        required: true
+        description: Request object for fetching loan details
+        schema:
+          $ref: '#/definitions/LoanRequest'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/LoanDetailsResponse'
+definitions:
+  Request:
+    title: Request
+    type: object
+    properties:
+      Validation:
+        $ref: '#/definitions/MobileValidation'
+      LogInfo:
+        $ref: '#/definitions/LogInfo'
+      ActionLog:
+        $ref: '#/definitions/ActionLog'
+      ForceLoad:
+        type: boolean
+    required:
+    - Validation
+    - LogInfo
+    - ActionLog
+  MobileValidation:
+    title: MobileValidation
+    type: object
+    properties:
+      Username:
+        type: string
+        description: Username for validation
+      LoginKey:
+        type: string
+        description: Login key for validation
+      AccessToken:
+        type: string
+        description: Access token for validation
+      RefreshToken:
+        type: string
+        description: Refresh token for validation
+      CustomerCode:
+        type: string
+        description: Customer code for validation
+      DeviceId:
+        type: string
+        description: Device ID for validation
+      AppKey:
+        type: string
+        description: Application key for validation
+    required:
+    - Username
+    - LoginKey
+    - AccessToken
+    - RefreshToken
+    - CustomerCode
+    - DeviceId
+    - AppKey
+  LogInfo:
+    title: LogInfo
+    type: object
+    properties:
+      IpAddress:
+        type: string
+        description: IP address of the request
+      LanguageCode:
+        type: string
+        description: Language code of the request
+      AppVersion:
+        type: string
+        description: Application version of the request
+    required:
+    - IpAddress
+    - LanguageCode
+    - AppVersion
+  ActionLog:
+    title: ActionLog
+    type: object
+    properties:
+      Id:
+        type: integer
+        format: int32
+        description: ID of the action log
+      Username:
+        type: string
+        description: Username associated with the action log
+      Controller:
+        type: string
+        description: Controller associated with the action log
+      Action:
+        type: string
+        description: Action associated with the action log
+      DeviceId:
+        type: string
+        description: Device ID associated with the action log
+      LoginKey:
+        type: string
+        description: Login key associated with the action log
+      Date:
+        type: string
+        format: date-time
+        description: Date of the action log
+      IpAddress:
+        type: string
+        description: IP address of the action log
+      LanguageCode:
+        type: string
+        description: Language code of the action log
+    required:
+    - Id
+    - Username
+    - Controller
+    - Action
+    - DeviceId
+    - LoginKey
+    - Date
+    - IpAddress
+    - LanguageCode
+  AccountDetailsRequest:
+    title: AccountDetailsRequest
+    type: object
+    properties:
+      Validation:
+        $ref: '#/definitions/MobileValidation'
+      LogInfo:
+        $ref: '#/definitions/LogInfo'
+      ActionLog:
+        $ref: '#/definitions/ActionLog'
+      ForceLoad:
+        type: boolean
+      Account:
+        type: string
+        description: Account identifier
+      AccountType:
+        type: integer
+        description: Type of the account
+        enum:
+          - 1 # Savings
+          - 2 # TimeDeposit
+          - 3 # Checking
+          - 4 # Current
+          - 5 # JointCredit
+          - 6 # Amortizing
+          - 7 # FullyAmortizing
+          - 8 # Unexpected
+    required:
+    - Validation
+    - LogInfo
+    - ActionLog
+    - Account
+    - AccountType
+  LoanRequest:
+    title: LoanRequest
+    type: object
+    properties:
+      Validation:
+        $ref: '#/definitions/MobileValidation'
+      LogInfo:
+        $ref: '#/definitions/LogInfo'
+      ActionLog:
+        $ref: '#/definitions/ActionLog'
+      ForceLoad:
+        type: boolean
+      Loan:
+        type: string
+        description: Loan identifier
+      LoanType:
+        type: integer
+        description: Type of the loan
+        enum:
+          - 1 # Savings
+          - 2 # TimeDeposit
+          - 3 # Checking
+          - 4 # Current
+          - 5 # JointCredit
+          - 6 # Amortizing
+          - 7 # FullyAmortizing
+          - 8 # Unexpected
+      DateRange:
+        $ref: '#/definitions/DateRange'
+    required:
+    - Validation
+    - LogInfo
+    - ActionLog
+    - Loan
+    - LoanType
+    - DateRange
+  DateRange:
+    title: DateRange
+    type: object
+    properties:
+      From:
+        type: string
+        format: date-time
+        description: Start date of the range
+      To:
+        type: string
+        format: date-time
+        description: End date of the range
+    required:
+    - From
+    - To
+  AccountsResponse:
+    title: AccountsResponse
+    type: object
+    properties:
+      Accounts:
+        type: array
+        items:
+          type: string
+        description: List of account identifiers
+  LoanDetailsResponse:
+    title: LoanDetailsResponse
+    type: object
+    properties:
+      LoanDetails:
+        type: array
+        items:
+          type: string
+        description: List of loan details

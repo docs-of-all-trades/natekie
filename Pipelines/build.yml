@@ -1,0 +1,29 @@
+variables:
+  - group: "Credentials"
+  - name: POOL_NAME
+    value: $[coalesce(variables['PoolName'], 'Linux agent pool')]
+
+resources:
+  repositories:
+    - repository: templates
+      type: git
+      name: Natech.Templates/Natech.Templates.DevOps
+      ref: main
+
+pool:
+  name: $(POOL_NAME)
+
+trigger: none
+
+pr:
+  autoCancel: true
+
+stages:
+
+  - template: stages/docker-build.yml@templates
+    parameters:
+      ServiceConnection: "NATECH_DEV_DOCKER"
+      ProjectDirectory: "natech-docs"
+      DockerfilePath: "natech-docs/Dockerfile"
+      BuildContext: "natech-docs"
+      Repository: "natech.docs"

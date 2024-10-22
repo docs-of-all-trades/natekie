@@ -1,0 +1,387 @@
+
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Natech.Mobile.WebApi",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/Accounts/GetAll": {
+      "post": {
+        "tags": [
+          "Accounts"
+        ],
+        "summary": "Get all accounts",
+        "operationId": "Accounts_GetAll",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Request"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/AccountsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/Accounts/GetAccountDetails": {
+      "post": {
+        "tags": [
+          "Accounts"
+        ],
+        "summary": "Get account details",
+        "operationId": "Accounts_GetAccountDetails",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AccountDetailsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/AccountsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/Accounts/GetLoanDetails": {
+      "post": {
+        "tags": [
+          "Accounts"
+        ],
+        "summary": "Get account loan details",
+        "operationId": "Accounts_GetLoanDetails",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LoanRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/LoanDetailsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/Accounts/GetLoanTransactions": {
+      "post": {
+        "tags": [
+          "Accounts"
+        ],
+        "summary": "Get account loan transactions",
+        "operationId": "Accounts_GetLoanTransactions",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LoanRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/LoanTransactionsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/Cards/GetUserCardDetails": {
+      "post": {
+        "tags": [
+          "Cards"
+        ],
+        "summary": "Get user card details",
+        "operationId": "Cards_GetUserCardDetails",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CardDetailsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/CardDetailsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/Cards/GetUserCards": {
+      "post": {
+        "tags": [
+          "Cards"
+        ],
+        "summary": "Get user cards list",
+        "operationId": "Cards_GetUserCards",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Request"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UserCardsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/Cards/GetCardLimits": {
+      "post": {
+        "tags": [
+          "Cards"
+        ],
+        "summary": "Get card limits",
+        "operationId": "Cards_GetCardLimits",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Request"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GetCardLimitsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/Cards/GetCardOperations": {
+      "post": {
+        "tags": [
+          "Cards"
+        ],
+        "summary": "Get card operations",
+        "operationId": "Cards_GetCardOperations",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetCardOperationsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GetCardOperationsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/Cards/GetCardPIN": {
+      "post": {
+        "tags": [
+          "Cards"
+        ],
+        "summary": "Get card PIN",
+        "operationId": "Cards_GetCardPIN",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CardsGenericRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GetCardPINResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/Cards/GetCardECommercePIN": {
+      "post": {
+        "tags": [
+          "Cards"
+        ],
+        "summary": "Get card eCommerce PIN",
+        "operationId": "Cards_GetCardECommercePIN",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CardsGenericRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GetCardECommercePINResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/Cards/SetCardOperations": {
+      "post": {
+        "tags": [
+          "Cards"
+        ],
+        "summary": "Set card operations",
+        "operationId": "Cards_SetCardOperations",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SetCardOperationsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/SetCardOperationsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/Cards/ChangeCardStatus": {
+      "post": {
+        "tags": [
+          "Cards"
+        ],
+        "summary": "Change card status",
+        "operationId": "Cards_ChangeCardStatus",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ChangeCardStatusRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/CardActionsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/Cards/ChangeCardLimits": {
+      "post": {
+        "tags": [
+          "Cards"
+        ],
+        "summary": "Change card limits",
+        "operationId": "Cards_ChangeCardLimits",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ChangeCardLimitsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/CardActionsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/Cards/ChangeCardPIN": {
+      "post": {
+        "tags": [
+          "Cards"
+        ],
+        "summary": "Change card PIN",
+        "operationId": "Cards_ChangeCardPIN",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CardsGenericRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/CardActionsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api
